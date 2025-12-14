@@ -1,4 +1,4 @@
-name: Build Android APK
+name: Build APK for Fire Tablet 7
 
 on:
   push:
@@ -11,16 +11,16 @@ jobs:
     
     steps:
     - name: Checkout code
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
     
     - name: Set up JDK 17
-      uses: actions/setup-java@v3
+      uses: actions/setup-java@v4
       with:
         distribution: 'temurin'
         java-version: '17'
     
     - name: Set up Python
-      uses: actions/setup-python@v4
+      uses: actions/setup-python@v5
       with:
         python-version: '3.10'
     
@@ -38,12 +38,12 @@ jobs:
         pip install --upgrade pip
         pip install buildozer cython==0.29.36
     
-    - name: Build APK with Buildozer
+    - name: Build APK for Fire Tablet 7
       run: |
         buildozer android debug
     
     - name: Upload APK artifact
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
-        name: bookcheck-apk
+        name: bookcheck-fire7-apk
         path: bin/*.apk
